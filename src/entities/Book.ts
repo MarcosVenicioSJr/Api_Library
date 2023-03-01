@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm"
+import { Author } from "./Author"
 
 
 enum Category{
@@ -23,6 +24,8 @@ export class Book{
     category: Category
     @Column({type: 'text'})
     publisher: string
-    @Column({type: 'text'})
+ 
+    @ManyToOne(() => Author, author => author.book)
+    @JoinColumn({name: 'authorId'})
     author: Author
 }
