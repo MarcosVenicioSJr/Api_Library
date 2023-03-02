@@ -18,11 +18,11 @@ enum Category{
 export class Book{
     @PrimaryGeneratedColumn()
     id: number
-    @Column({type: 'text'})
+    @Column({type: 'varchar'})
     title: string
     @Column('int')
     category: Category
-    @Column({type: 'text'})
+    @Column({type: 'varchar'})
     publisher: string
  
     @ManyToOne(() => Author, author => author.book)

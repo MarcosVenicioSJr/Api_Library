@@ -5,7 +5,7 @@ import { Book } from "./Book"
 export class Author{
     @PrimaryGeneratedColumn()
     id: number
-    @Column({type: String})
+    @Column({type: 'varchar'})
     name: string
     @OneToMany(() => Book, book => book.author)
     book: Book[]

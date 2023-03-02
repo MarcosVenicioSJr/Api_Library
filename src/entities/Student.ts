@@ -4,9 +4,9 @@ import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
 export class Student {
     @PrimaryGeneratedColumn()
     id: number
-    @Column({length: 30, type: 'text'})
+    @Column({type: 'varchar'})
     name: string
-    @Column({type: 'text'})
+    @Column({type: 'varchar'})
     email: string
 
 }

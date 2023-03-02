@@ -4,8 +4,8 @@ import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
 export class Admin{
     @PrimaryGeneratedColumn()
     id: number
-    @Column({type: 'text'})
+    @Column({type: 'varchar'})
     name: string
-    @Column({type: 'text', length: 5})
+    @Column({type: 'varchar', length: 5})
     token: string
 }
