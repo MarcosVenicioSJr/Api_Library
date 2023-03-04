@@ -1,4 +1,4 @@
 import { AppDataSource } from "../data-source";
 import { Book } from "../entities/Book";
 
-const adminRepository = AppDataSource.getRepository(Book)
+export const bookRepository = AppDataSource.getRepository(Book)

@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
+import { bookRepository } from "../repositories/bookRepository";
 
 class StudentController {
-    async getBooksByTittle(req: Request, res: Response){
-        const {tittle} = req.body
-    }
+  
 }
 
 export default new StudentController();
