@@ -1,10 +1,8 @@
 import { Request, Response } from "express";
 
 class StudentController {
-    async test(req: Request, res: Response){
-        res.json({
-            message: "Hello World"
-        })
+    async getBooksByTittle(req: Request, res: Response){
+        const {tittle} = req.body
     }
 }
 

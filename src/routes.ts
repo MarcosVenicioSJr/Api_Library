@@ -3,6 +3,6 @@ import StudentController from "./controllers/StudentController";
 
 const routes = Router();
 
-routes.get('/student', StudentController.test)
+routes.get('/student', StudentController.getBooksByTittle)
 
 export default routes;
