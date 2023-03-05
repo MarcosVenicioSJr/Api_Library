@@ -14,6 +14,18 @@ class adminDao {
     return null
   }
 
+  async verifyBook(title: string){
+    const book = await bookRepository.findOneBy({
+      title: title
+    })
+
+    if(book){
+        return book.id
+    }
+
+    return null
+  }
+
   async createBook(title: string, category: string, author: any, publisher: string) {
     const book = await bookRepository.create({
         title: title,
@@ -25,7 +37,7 @@ class adminDao {
     bookRepository.save(book)
   }
 
-  
+
 }
 
 export default new adminDao();
