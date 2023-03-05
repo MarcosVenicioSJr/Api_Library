@@ -24,6 +24,10 @@ class AdminController {
         console.log(save)
         return res.status(201).json({Success: true, message: "Book saved successfully!"})
     }
+
+    async deleteBook(req: Request, res: Response){
+        const {title, token} = req.body;
+    }
 }
 
 

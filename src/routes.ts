@@ -7,5 +7,6 @@ const routes = Router();
 
 routes.get('/book', BookController.getBooksByTittle)
 routes.post('/book', AdminController.createBook)
+routes.delete('/book', AdminController.deleteBook)
 
 export default routes;
