@@ -26,6 +26,18 @@ class adminDao {
     return null
   }
 
+  async verifyToken(title: string){
+    const token = await bookRepository.findOneBy({
+      title: title
+    })
+
+    if(token){
+        return token.id
+    }
+
+    return null
+  }
+
   async createBook(title: string, category: string, author: any, publisher: string) {
     const book = await bookRepository.create({
         title: title,

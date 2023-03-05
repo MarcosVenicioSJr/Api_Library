@@ -27,6 +27,20 @@ class AdminController {
 
     async deleteBook(req: Request, res: Response){
         const {title, token} = req.body;
+
+        const tokenExists = await adminDao.verifyToken(token)
+        if(!tokenExists){
+            return res.status(400).json({
+                message: "Token invalid. Please try again!"
+            })
+        }
+
+        const bookExists = await adminDao.verifyBook(title)
+        if(!bookExists){
+            return res.status(400).json({
+                message: "Book not found"
+            })
+        }
     }
 }
 
