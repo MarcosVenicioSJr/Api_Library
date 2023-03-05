@@ -2,17 +2,6 @@ import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typ
 import { Author } from "./Author"
 
 
-enum Category{
-    Romance,
-    Science,
-    Fiction,
-    Drama,
-    Action,
-    Adventure,
-    Poetry,
-    Mystery,
-    Thriller
-}
 
 @Entity('Books')
 export class Book{
@@ -20,8 +9,8 @@ export class Book{
     id: number
     @Column({type: 'varchar'})
     title: string
-    @Column('int')
-    category: Category
+    @Column('varchar')
+    category: string
     @Column({type: 'varchar'})
     publisher: string
  
