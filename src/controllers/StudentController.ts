@@ -16,7 +16,9 @@ class StudentController {
   }
 
   async getAllStudents(req: Request, res: Response){
-    
+    const students = await studentDao.getAllStudents();
+
+    res.status(200).json(students);
   }
 }
 

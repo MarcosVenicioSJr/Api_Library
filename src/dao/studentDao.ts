@@ -5,6 +5,12 @@ class studentDao {
     const student = await studentRepository.findOneBy({ id: id });
     return student;
   }
+
+  async getAllStudents() {
+    const students = await studentRepository.find()
+    return students;
+  }
+
 }
 
 export default new studentDao();
