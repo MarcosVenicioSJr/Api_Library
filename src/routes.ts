@@ -6,7 +6,9 @@ import AdminController from "./controllers/AdminController";
 const routes = Router();
 
 routes.get('/book', BookController.getBooksByTittle)
+routes.get('student/:id', StudentController.getStudentById)
 routes.post('/book', AdminController.createBook)
+
 routes.delete('/book', AdminController.deleteBook)
 
 

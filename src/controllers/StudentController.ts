@@ -1,8 +1,11 @@
 import { Request, Response } from "express";
-import { bookRepository } from "../repositories/bookRepository";
 
 class StudentController {
-  
+    async getStudentById(req: Request, res: Response){
+        const { id } = req.params;
+
+    }
+
 }
 
 export default new StudentController();
