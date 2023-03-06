@@ -1,3 +1,4 @@
+import { adminRepository } from "../repositories/adminRespository";
 import { authorRepository } from "../repositories/authorRepository";
 import { bookRepository } from "../repositories/bookRepository";
 
@@ -26,16 +27,12 @@ class adminDao {
     return null
   }
 
-  async verifyToken(title: string){
-    const token = await bookRepository.findOneBy({
-      title: title
+  async verifyToken(token: string){
+    const tokenId = await adminRepository.findOneBy({
+      token: token
     })
 
-    if(token){
-        return token.id
-    }
-
-    return null
+    return tokenId
   }
 
   async createBook(title: string, category: string, author: any, publisher: string) {
@@ -47,6 +44,14 @@ class adminDao {
     })
 
     bookRepository.save(book)
+  }
+
+  async deleteBook(title: string){
+    const book = await bookRepository.delete({
+      title: title
+    })
+    
+    
   }
 
 

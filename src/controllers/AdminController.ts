@@ -4,7 +4,7 @@ import adminDao from "../dao/adminDao";
 
 class AdminController {
     async createBook(req: Request, res: Response){
-        const {title, category, publisher, author} = req.body;
+        const {title, category, publisher, author, token} = req.body;
    
         const authorId = await adminDao.verifyAuthor(author)
         if(!authorId){
@@ -17,6 +17,13 @@ class AdminController {
         if(bookExists){
             return res.status(400).json({
                 message: "Book already exists"
+            })
+        }
+
+        const tokenExists = await adminDao.verifyToken(token)
+        if(!tokenExists){
+            return res.status(400).json({
+                message: "Token invalid. Please try again!"
             })
         }
 
@@ -41,6 +48,10 @@ class AdminController {
                 message: "Book not found"
             })
         }
+
+        const bookDelete = await adminDao.deleteBook(title)
+        
+        return res.status(200).json({Success: true, message: "Book deleted successfully!"})
     }
 }
 
