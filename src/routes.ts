@@ -10,6 +10,7 @@ routes.get('/student', StudentController.getStudentById)
 routes.get('/getAllStudent', StudentController.getAllStudents)
 
 routes.post('/book', AdminController.createBook)
+routes.post('/admin', AdminController.createAdmin)
 
 routes.delete('/book', AdminController.deleteBook)
 

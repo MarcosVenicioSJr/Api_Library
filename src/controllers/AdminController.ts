@@ -56,7 +56,18 @@ class AdminController {
 
     async createAdmin(req: Request, res: Response): Promise<Response>{
         const {name, newToken, token} = req.body
-        
+        console.log(req.body)
+
+        const tokenExists = await adminDao.verifyToken(token)
+        if(tokenExists){
+            return res.status(400).json({
+                message: "Token already. Please try again!"
+            })
+        }
+
+        const newAdmin = await adminDao.createAdmin(name, newToken)
+
+        return res.status(201).json({Success: true, message: "Admin created successfully!"})
     }
 }
 
