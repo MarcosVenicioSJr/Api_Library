@@ -54,6 +54,10 @@ class adminDao {
     
   }
 
+  async createAdmin(name: string, token: string){
+    
+  }
+
 
 }
 
