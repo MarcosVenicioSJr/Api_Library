@@ -55,7 +55,12 @@ class adminDao {
   }
 
   async createAdmin(name: string, token: string){
+    const newAdmin = await authorRepository.create({
+      name: name,
+      token: token
+    })
     
+    adminRepository.save(newAdmin)
   }
 
 
