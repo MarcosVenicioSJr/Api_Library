@@ -6,6 +6,6 @@ export class Admin{
     id: number
     @Column({type: 'varchar'})
     name: string
-    @Column({type: 'varchar', length: 5})
+    @Column({type: 'varchar', length: 8})
     token: string
 }
