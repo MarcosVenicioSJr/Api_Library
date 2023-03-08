@@ -53,6 +53,11 @@ class AdminController {
         
         return res.status(200).json({Success: true, message: "Book deleted successfully!"})
     }
+
+    async createAdmin(req: Request, res: Response): Promise<Response>{
+        const {name, newToken, token} = req.body
+        
+    }
 }
 
 
