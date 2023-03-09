@@ -7,6 +7,7 @@ const routes = Router();
 
 routes.get('/book', BookController.getBooksByTittle)
 routes.get('/student', StudentController.getStudentById)
+routes.get('/getAllStudent', StudentController.getAllBooks)
 routes.get('/getAllStudent', StudentController.getAllStudents)
 
 routes.post('/book', AdminController.createBook)

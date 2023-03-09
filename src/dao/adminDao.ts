@@ -15,6 +15,14 @@ class adminDao {
     return null
   }
 
+  async verifyAdminId(id: number){
+    const admin = await adminRepository.findOneBy({
+      id: id,
+    });
+
+    return admin
+  }
+
   async verifyBook(title: string){
     const book = await bookRepository.findOneBy({
       title: title
@@ -63,6 +71,11 @@ class adminDao {
     adminRepository.save(newAdmin)
   }
 
+  async deleteAdmin(id: number){
+    const deleteAdmin = await adminRepository.delete({
+      id: id
+    })
+  }
 
 }
 
