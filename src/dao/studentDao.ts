@@ -1,3 +1,4 @@
+import { bookRepository } from "../repositories/bookRepository";
 import { studentRepository } from "../repositories/studentRepository";
 
 class studentDao {
@@ -9,6 +10,11 @@ class studentDao {
   async getAllStudents() {
     const students = await studentRepository.find()
     return students;
+  }
+
+  async getAllBooks() {
+    const books = await bookRepository.find()
+    return books;
   }
 
 }
