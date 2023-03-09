@@ -20,6 +20,11 @@ class StudentController {
 
     res.status(200).json(students);
   }
+
+  async getAllBooks(req: Request, res: Response){
+    const books = await studentDao.getAllBooks();
+     res.status(200).json(books);
+  }
 }
 
 export default new StudentController();
