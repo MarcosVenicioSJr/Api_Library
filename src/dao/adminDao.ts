@@ -2,7 +2,7 @@ import { adminRepository } from "../repositories/adminRespository";
 import { authorRepository } from "../repositories/authorRepository";
 import { bookRepository } from "../repositories/bookRepository";
 
-class adminDao {
+class AdminDao {
   async verifyAuthor(name: string) {
     const author = await authorRepository.findOneBy({
       name: name,
@@ -21,18 +21,6 @@ class adminDao {
     });
 
     return admin
-  }
-
-  async verifyBook(title: string){
-    const book = await bookRepository.findOneBy({
-      title: title
-    })
-
-    if(book){
-        return book.id
-    }
-
-    return null
   }
 
   async verifyToken(token: string){
@@ -79,4 +67,4 @@ class adminDao {
 
 }
 
-export default new adminDao();
+export default new AdminDao();

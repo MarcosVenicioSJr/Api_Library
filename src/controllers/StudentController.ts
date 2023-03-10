@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import studentDao from "../dao/studentDao";
+import BookDao from "../dao/bookDao";
 
 class StudentController {
   async getStudentById(req: Request, res: Response) {
@@ -35,6 +36,15 @@ class StudentController {
         .status(404)
         .json({ success: false, message: "Student Not Found!" });
     }
+
+    const book = await BookDao.verifyBook(bookName)
+    if (!book) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Book Not Found!" });
+    }
+
+    
 
   }
 }
