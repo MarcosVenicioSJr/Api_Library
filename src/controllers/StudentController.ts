@@ -15,21 +15,27 @@ class StudentController {
     return res.status(200).json(student);
   }
 
-  async getAllStudents(req: Request, res: Response){
+  async getAllStudents(req: Request, res: Response) {
     const students = await studentDao.getAllStudents();
 
     res.status(200).json(students);
   }
 
-  async getAllBooks(req: Request, res: Response){
+  async getAllBooks(req: Request, res: Response) {
     const books = await studentDao.getAllBooks();
-     res.status(200).json(books);
+    res.status(200).json(books);
   }
 
-  async rentedBooks(req: Request, res: Response){
-    const {name, email, bookName} = req.body;
+  async rentedBooks(req: Request, res: Response) {
+    const { name, email, bookName } = req.body;
 
-    
+    const validateStudent = await studentDao.verifyStudent(email);
+    if (!validateStudent) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Student Not Found!" });
+    }
+
   }
 }
 

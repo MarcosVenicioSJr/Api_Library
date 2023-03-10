@@ -17,6 +17,11 @@ class studentDao {
     return books;
   }
 
+  async verifyStudent(email: string,){
+    const student = await studentRepository.findOneBy({ email: email });
+    return student;
+  }
+
 }
 
 export default new studentDao();
