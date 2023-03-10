@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany} from "typeorm"
 import { Author } from "./Author"
 
 
@@ -17,4 +17,7 @@ export class Book{
     @ManyToOne(() => Author, author => author.book)
     @JoinColumn({name: 'authorId'})
     author: Author
+
+    @Column({type: 'int2'})
+    isDisponible: number
 }
