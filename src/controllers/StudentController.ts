@@ -25,6 +25,12 @@ class StudentController {
     const books = await studentDao.getAllBooks();
      res.status(200).json(books);
   }
+
+  async rentedBooks(req: Request, res: Response){
+    const {name, email, bookName} = req.body;
+
+    
+  }
 }
 
 export default new StudentController();
