@@ -18,7 +18,7 @@ class BookDao {
       {
         title: title,
       },
-      { isDisponible: 1 }
+      { isDisponible: 0 }
     );
   }
 }

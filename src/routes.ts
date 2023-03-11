@@ -12,6 +12,7 @@ routes.get('/getAllStudent', StudentController.getAllStudents)
 
 routes.post('/book', AdminController.createBook)
 routes.post('/admin', AdminController.createAdmin)
+routes.post('/student/rented', StudentController.rentedBooks)
 
 routes.delete('/book', AdminController.deleteBook)
 

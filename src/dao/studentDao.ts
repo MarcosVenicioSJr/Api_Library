@@ -1,7 +1,7 @@
 import { bookRepository } from "../repositories/bookRepository";
 import { studentRepository } from "../repositories/studentRepository";
 
-class studentDao {
+class StudentDao {
   async getStudentById(id: number) {
     const student = await studentRepository.findOneBy({ id: id });
     return student;
@@ -22,6 +22,13 @@ class studentDao {
     return student;
   }
 
+  async alterBookRented(email: string, bookName: string){
+    const student = await studentRepository.update({email: email}, {rentedBooks: bookName});
+    studentRepository.save
+  }
+
+
+
 }
 
-export default new studentDao();
+export default new StudentDao();

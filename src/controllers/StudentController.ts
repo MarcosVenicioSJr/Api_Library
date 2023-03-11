@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import studentDao from "../dao/studentDao";
+import StudentDao from "../dao/studentDao";
 import BookDao from "../dao/bookDao";
 
 class StudentController {
@@ -8,7 +8,7 @@ class StudentController {
 
     const parseId = Number.parseInt(id);
 
-    const student = await studentDao.getStudentById(parseId);
+    const student = await StudentDao.getStudentById(parseId);
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
@@ -17,20 +17,20 @@ class StudentController {
   }
 
   async getAllStudents(req: Request, res: Response) {
-    const students = await studentDao.getAllStudents();
+    const students = await StudentDao.getAllStudents();
 
     res.status(200).json(students);
   }
 
   async getAllBooks(req: Request, res: Response) {
-    const books = await studentDao.getAllBooks();
+    const books = await StudentDao.getAllBooks();
     res.status(200).json(books);
   }
 
   async rentedBooks(req: Request, res: Response) {
     const { name, email, bookName } = req.body;
 
-    const validateStudent = await studentDao.verifyStudent(email);
+    const validateStudent = await StudentDao.verifyStudent(email);
     if (!validateStudent) {
       return res
         .status(404)
@@ -44,8 +44,20 @@ class StudentController {
         .json({ success: false, message: "Book Not Found!" });
     }
 
-    
+    try {
+    const rentedStudent = await StudentDao.alterBookRented(email, bookName)
+    const rentedBook = await BookDao.rentedBook(bookName)
+    return res.status(200).json({ success: true, message: 'Book rented!'})
+    } catch (error) {
+      return res.status(500).json({ success: false, message: error }) 
+    }
 
+
+    
+  }
+
+  async returnBook(req: Request, res: Response) {
+    
   }
 }
 
