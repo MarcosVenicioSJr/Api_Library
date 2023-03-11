@@ -17,7 +17,7 @@ class StudentDao {
     return books;
   }
 
-  async verifyStudent(email: string,){
+  async verifyStudent(email: string){
     const student = await studentRepository.findOneBy({ email: email });
     return student;
   }

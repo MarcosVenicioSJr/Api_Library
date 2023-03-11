@@ -57,6 +57,22 @@ class StudentController {
   }
 
   async returnBook(req: Request, res: Response) {
+    const { name, email, bookName } = req.body;
+
+    const validateStudent = await StudentDao.verifyStudent(email)
+    if (!validateStudent) {
+      return res
+      .status(404)
+      .json({ success: false, message: "Student Not Found!" });
+    }
+
+    const book = await BookDao.verifyBook(bookName)
+    if (!book) {
+      return res
+       .status(404)
+       .json({ success: false, message: "This book is not from here" });
+    }
+
     
   }
 }
