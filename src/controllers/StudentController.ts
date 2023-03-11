@@ -73,7 +73,12 @@ class StudentController {
        .json({ success: false, message: "This book is not from here" });
     }
 
-    
+    try {
+      
+      const returnBook = await StudentDao.returnBook(email, bookName)
+    } catch (error) {
+      res.status(500).json({success: false, message: "Error:" + error})
+    }
   }
 }
 

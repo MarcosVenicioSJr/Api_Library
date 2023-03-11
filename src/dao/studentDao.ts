@@ -27,6 +27,10 @@ class StudentDao {
     studentRepository.save
   }
 
+  async returnBook(email: string, bookName: string){
+    const student = await studentRepository.update({email: email}, {rentedBooks: "null"})
+  }
+
 
 
 }
