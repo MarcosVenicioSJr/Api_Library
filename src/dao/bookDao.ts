@@ -21,6 +21,10 @@ class BookDao {
       { isDisponible: 0 }
     );
   }
+
+  async returnBook(title: string) {
+    const modifyStatus = await bookRepository.update({title: title}, {isDisponible: 1})
+  }
 }
 
 export default new BookDao();

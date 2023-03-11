@@ -74,8 +74,9 @@ class StudentController {
     }
 
     try {
-      
-      const returnBook = await StudentDao.returnBook(email, bookName)
+      const returnBook = await BookDao.returnBook(bookName)
+      const returnBookStudent = await StudentDao.returnBook(email, bookName)
+      return res.status(200).json({success: true, message: "Book returned successfully"})
     } catch (error) {
       res.status(500).json({success: false, message: "Error:" + error})
     }
